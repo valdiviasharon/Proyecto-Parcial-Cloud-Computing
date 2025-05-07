@@ -96,5 +96,5 @@ Este repositorio implementa una aplicación web que permite buscar palabras clav
 8. *Accede a la aplicación desde el navegador* usando la IP externa del servicio frontend o el balanceador de carga:
 
    
-   http://<EXTERNAL_IP>:80
+   http://34.95.67.230/
    
