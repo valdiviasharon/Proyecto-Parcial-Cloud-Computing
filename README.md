@@ -1,5 +1,12 @@
 # Proyecto de Búsqueda en Videos con Docker
-
+## Integrantes
+```plaintext
+Cabrera Huanqui, Luigi
+Concha Sifuentes, Fabián
+Gómez del Carpio, Alexander
+Luque Juárez, Camila
+Valdivia Begazo, Sharon
+```
 Este repositorio implementa una aplicación web que permite buscar palabras clave en los frames extraídos de videos. La búsqueda se basa en un índice invertido generado a partir del contenido visual extraído con Google Cloud Vision API. El sistema incluye una interfaz web simple y un backend construido con Flask, todo orquestado mediante Docker.
 
 En el siguiente [link](https://drive.google.com/file/d/1Q1rfC2QVkg7nPSkhtKEKY9QkUOYWFgJx/view?usp=sharing), se encuentra un video mostranso su funcionamiento.  
