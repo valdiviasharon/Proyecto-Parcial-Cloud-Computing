@@ -50,13 +50,11 @@ Este repositorio implementa una aplicación web que permite buscar palabras clav
 4. *Construir y subir las imágenes a Artifact Registry*:
 
    - Asegúrate de haber creado un repositorio en Artifact Registry:
-   >
-   > bash
-   > gcloud artifacts repositories create video-repo \
-   >     --repository-format=docker \
-   >     --location=us-central1
-   > 
-
+   ``` bash
+   gcloud artifacts repositories create video-repo \
+        --repository-format=docker \
+        --location=us-central1
+   ```
    Luego ejecuta:
 
    bash
