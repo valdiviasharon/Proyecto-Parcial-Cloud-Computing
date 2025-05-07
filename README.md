@@ -31,70 +31,90 @@ Este repositorio implementa una aplicación web que permite buscar palabras clav
 ```
 ## Ejecución en Google Cloud Platform
 
+### 🚀 ¿Cómo ejecutar el proyecto en Google Cloud Platform?
+
 ### Prerrequisitos
 
-- Tener una instancia activa en Google Compute Engine (máquina virtual).
-- Haber instalado Docker y Docker Compose en la VM.
-- Tener habilitada la Google Cloud Vision API.
-- Contar con el archivo de credenciales del servicio (kubeletes-xxx.json).
+- Tener una instancia de VM o un clúster de GKE activo.
+- Haber instalado Docker y tener configurado `gcloud` con permisos adecuados.
+- Google Cloud Vision API habilitada.
+- Archivo de credenciales `kubeletes-xxx.json` disponible.
+- Haber creado un repositorio en Artifact Registry.
 
-### Pasos
+---
 
-1. *Subir el proyecto a tu instancia GCP*:
-   - Abrir la *consola web de Google Cloud*.
-   - Ir a tu máquina virtual y hacer clic en *"Abrir en el navegador mediante SSH"*.
-   - En la terminal web, hacer clic en el ícono de carpeta 📁 y elegir *"Subir archivos"*.
-   - Subir todo el proyecto .zip o sus archivos descomprimidos directamente.
-2. *Descomprimir el archivo (si es necesario)*:
+### 🔹 Pasos para desplegar con Artifact Registry y Kubernetes
+
+1. **Sube el proyecto a tu instancia GCP**:
+   - Abre la **consola web de Google Cloud**.
+   - Ve a tu VM y haz clic en **"Abrir en el navegador mediante SSH"**.
+   - En la terminal web, haz clic en el ícono de carpeta 📁 y selecciona **"Subir archivos"**.
+   - Sube `Proyecto-Cloud-Completado.zip` o los archivos descomprimidos directamente.
+
+2. **Descomprime el archivo (si es necesario)**:
    ```bash
-   unzip Proyecto-Parcial-Cloud-Computing.zip
-   cd Proyecto-Parcial-Cloud-Computing
+   unzip Proyecto-Cloud-Completado.zip
+   cd Proyecto-Cloud-Completado
+    ```
 
-3. *Colocar el archivo de credenciales del API de Vision* en la carpeta backend/ con el nombre kubeletes-xxx.json.
+3. *Configura tu repositorio en Artifact Registry*:
+   Desde la consola de Google Cloud:
 
-4. *Construir y subir las imágenes a Artifact Registry*:
+   * Ve a *Artifact Registry > Repositories*
+   * Haz clic en *"Create Repository"*
+   * Rellena los campos:
 
-   - Asegúrate de haber creado un repositorio en Artifact Registry:
-   ``` bash
-   gcloud artifacts repositories create video-repo \
-        --repository-format=docker \
-        --location=us-central1
+     | Campo         | Valor sugerido                       |
+     | ------------- | ------------------------------------ |
+     | Name          | video-repo (o el que prefieras)    |
+     | Format        | Docker                             |
+     | Location Type | Regional                           |
+     | Region        | us-central1 o southamerica-west1 |
+     | Encryption    | Google-managed (por defecto)       |
+
+4. **Coloca el archivo de credenciales en la carpeta `backend/`** con el nombre `kubeletes-xxx.json`.
+
+5. **Autentica Docker con Artifact Registry**:
+
+   ```bash
+   gcloud auth configure-docker us-central1-docker.pkg.dev
    ```
-   Luego ejecuta:
 
-   bash
+6. **Construye y sube las imágenes**:
+
    # Backend
-    ``` bash
+    ```bash
    cd backend
-   docker build -t us-central1-docker.pkg.dev/kubeletes/video-repo/video-backend:latest .
-   docker push us-central1-docker.pkg.dev/kubeletes/video-repo/video-backend:latest
-    ``` 
+   docker build -t us-central1-docker.pkg.dev/<TU_PROYECTO>/video-repo/video-backend:latest .
+   docker push us-central1-docker.pkg.dev/<TU_PROYECTO>/video-repo/video-backend:latest
+    ```
    # Frontend
-    ``` bash
+    ```bash
    cd ../frontend
-   docker build -t us-central1-docker.pkg.dev/kubeletes/video-repo/video-frontend:latest .
-   docker push us-central1-docker.pkg.dev/kubeletes/video-repo/video-frontend:latest
+   docker build -t us-central1-docker.pkg.dev/<TU_PROYECTO>/video-repo/video-frontend:latest .
+   docker push us-central1-docker.pkg.dev/<TU_PROYECTO>/video-repo/video-frontend:latest
    ```
 
-6. *Despliega los servicios en tu clúster de GKE*:
-   Asegúrate de que tu clúster esté configurado y el contexto esté apuntando a él (gcloud container clusters get-credentials).
+   > Reemplaza `<TU_PROYECTO>` con el ID de tu proyecto en GCP.
 
-   Luego aplica los manifiestos YAML:
+8. **Despliega el sistema en GKE**:
+   Asegúrate de tener configurado el acceso al clúster:
 
-   ``` bash
+   ```bash
+   gcloud container clusters get-credentials <nombre-cluster> --region <region>
    kubectl apply -f kubernetes/
-   ``` 
+   ```
 
-7. *Verifica el estado de los pods y servicios*:
+9. **Verifica el estado del despliegue**:
 
-   ``` bash
+   ```bash
    kubectl get pods
    kubectl get services
    kubectl get ingress
-   ``` 
+   ```
 
-8. *Accede a la aplicación desde el navegador* usando la IP externa del servicio frontend o el balanceador de carga:
+10. **Accede a tu aplicación** usando la IP externa del servicio o balanceador:
 
-   
-   http://34.95.67.230/
-   
+   ```bash
+   http://<EXTERNAL-IP>
+   ```
