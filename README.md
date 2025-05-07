@@ -10,20 +10,25 @@ Este repositorio implementa una aplicación web que permite buscar palabras clav
 
 ## Estructura del Proyecto
 
-* backend/                  
-   * app.py                       
-   * Dockerfile                   
-   * requirements.txt             
-   * uploads/                    
-   * inverted\_index.json         
-   * metadata.json               
-* frontend/                 
-   * index.html                  
-   * style.css                   
-   * main.js                      
-   * Dockerfile                   
-* docker-compose.yml       
-
+```plaintext
+.
+├── backend/
+│   ├── app.py                  # Lógica del backend (API)
+│   ├── Dockerfile              # Dockerfile para construir la imagen del backend
+│   ├── requirements.txt        # Dependencias de Python
+│   ├── uploads/                # Carpeta para archivos subidos
+│   ├── inverted_index.json     # Índice invertido generado
+│   └── metadata.json           # Metadatos de los archivos procesados
+│
+├── frontend/
+│   ├── index.html              # Página principal del frontend
+│   ├── style.css               # Estilos CSS
+│   ├── main.js                 # Lógica del cliente (JavaScript)
+│   └── Dockerfile              # Dockerfile para construir la imagen del frontend
+│
+└── docker-compose.yml          # Orquestador de servicios con Docker Compose
+    
+```
 ## Ejecución en Google Cloud Platform
 
 ### Prerrequisitos
