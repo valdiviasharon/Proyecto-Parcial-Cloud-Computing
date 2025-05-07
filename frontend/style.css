@@ -1,0 +1,230 @@
+body {
+   font-family: 'Caudex', serif;
+   margin: 0;
+   padding: 0;
+   background-color: #fafafa;
+   color: #333;
+}
+
+h2 {
+   font-family: 'Arial';
+   font-weight: normal;
+}
+
+/* Header */
+#header {
+   padding: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border-bottom: 1px solid #ddd;
+   background-color: white;
+}
+#header h1 {
+   font-size: 32px;
+   margin: 0;
+}
+
+/* Search Section */
+#search-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   padding: 40px 20px 10px 20px;
+}
+#search-section h2 {
+   font-size: 48px;
+   margin: 0 0 20px 0;
+   font-family: system-ui;
+   font-weight: 700;
+}
+#search-bar {
+   width: 80%;
+   display: flex;
+   align-items: center;
+   margin-top: 10px;
+   border-bottom: 2px solid #000;
+   background-color: #fafafa;
+   padding: 8px 15px;
+}
+.search-icon {
+   font-size: 18px;
+   margin-right: 10px;
+   color: #666;
+}
+#search-bar input[type="text"] {
+   flex: 1;
+   padding: 8px 0;
+   border: none;
+   font-size: 18px;
+   outline: none;
+   background-color: transparent;
+   font-family: 'Poppins', sans-serif;
+}
+
+/* Upload Section */
+#upload-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 30px 20px;
+   margin: 40px auto 20px auto;
+   width: 50%;
+   min-width: 300px;
+}
+#upload-section h3 {
+   margin-bottom: 20px;
+   font-size: 24px;
+   color: #2e2d6d;
+}
+#upload-section button {
+   background-color: #2e2d6d;
+   color: white;
+   border: none;
+   padding: 12px 30px;
+   border-radius: 25px;
+   font-size: 16px;
+   cursor: pointer;
+}
+#upload-section button:hover {
+   background-color: #24235a;
+}
+
+/* Drag and Drop Area */
+.drag-drop-area {
+   width: 100%;
+   padding: 40px;
+   background-color: #f5faff;
+   border: 2px dashed #b0c4de;
+   border-radius: 15px;
+   text-align: center;
+   margin-bottom: 20px;
+   transition: background-color 0.3s ease;
+}
+.drag-drop-area p {
+   margin: 10px 0;
+   font-size: 16px;
+   color: #333;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 500;
+}
+.drag-drop-area p:nth-child(2) {
+   color: #666;
+   font-size: 14px;
+}
+.browse-button {
+   background-color: #4682b4;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 25px;
+   font-size: 16px;
+   cursor: pointer;
+   margin-top: 10px;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 600;
+}
+.browse-button:hover {
+   background-color: #4169e1;
+}
+
+/* Frame Selection */
+.frame-selection {
+   width: 55%;
+   background-color: #f5faff;
+   border: 2px solid #b0c4de;
+   border-radius: 15px;
+   padding: 15px;
+   margin-bottom: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+   font-family: 'Poppins', sans-serif;
+}
+.frame-selection label {
+   font-size: 16px;
+   color: #333;
+}
+.frame-selection input[type="number"] {
+   width: 50px;
+   padding: 8px;
+   border: 1px solid #b0c4de;
+   border-radius: 10px;
+   font-size: 16px;
+   outline: none;
+   background-color: white;
+   transition: border-color 0.3s ease;
+}
+.frame-selection input[type="number"]:focus {
+   border-color: #4682b4;
+}
+
+/* Metadata Section */
+#metadata-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 30px 20px;
+   font-size: 15px;
+}
+.metadata-button {
+   background-color: #2e2d6d;
+   color: white;
+   border: none;
+   padding: 12px 30px;
+   border-radius: 25px;
+   font-size: 16px;
+   cursor: pointer;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 600;
+}
+.metadata-button:hover {
+   background-color: #24235a;
+}
+
+/* Progress Bar */
+#progress-container {
+   width: 100%;
+   background-color: #eee;
+   border-radius: 10px;
+   overflow: hidden;
+   margin-top: 20px;
+   height: 20px;
+   display: none;
+}
+#progress-bar {
+   height: 100%;
+   width: 0%;
+   background-color: #2e2d6d;
+   transition: width 0.4s ease;
+}
+
+/* Results */
+#resultados {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   padding: 40px 20px;
+   gap: 20px;
+}
+.video-item {
+   background: white;
+   padding: 20px;
+   border-radius: 15px;
+   box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+   width: 300px;
+   transition: transform 0.3s;
+}
+.video-item:hover {
+   transform: translateY(-5px);
+}
+.video-item h4 {
+   margin-bottom: 10px;
+   color: #2e2d6d;
+}
+.video-item video {
+   width: 100%;
+   border-radius: 10px;
+}
