@@ -31,7 +31,7 @@ Este repositorio implementa una aplicación web que permite buscar palabras clav
 ```
 ## Ejecución en Google Cloud Platform
 
-### 🚀 ¿Cómo ejecutar el proyecto en Google Cloud Platform?
+### ¿Cómo ejecutar el proyecto en Google Cloud Platform?
 
 ### Prerrequisitos
 
@@ -43,7 +43,7 @@ Este repositorio implementa una aplicación web que permite buscar palabras clav
 
 ---
 
-### 🔹 Pasos para desplegar con Artifact Registry y Kubernetes
+### Pasos para desplegar con Artifact Registry y Kubernetes
 
 1. **Sube el proyecto a tu instancia GCP**:
    - Abre la **consola web de Google Cloud**.
