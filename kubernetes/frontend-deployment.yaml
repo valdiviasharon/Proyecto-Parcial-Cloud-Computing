@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: video-frontend
+  template:
+    metadata:
+      labels:
+        app: video-frontend
+    spec:
+      containers:
+      - name: video-frontend
+        image: us-central1-docker.pkg.dev/kubeletes/video-repo/video-frontend:latest
+        ports:
+        - containerPort: 80
+

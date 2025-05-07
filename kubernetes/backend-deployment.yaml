@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: video-backend
+  template:
+    metadata:
+      labels:
+        app: video-backend
+    spec:
+      containers:
+      - name: video-backend
+        image: us-central1-docker.pkg.dev/kubeletes/video-repo/video-backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+        volumeMounts:
+        - name: video-storage
+          mountPath: /app/videos
+      volumes:
+      - name: video-storage
+        persistentVolumeClaim:
+          claimName: video-storage-pvc
