@@ -64,34 +64,36 @@ Este repositorio implementa una aplicación web que permite buscar palabras clav
 
    bash
    # Backend
+    ``` bash
    cd backend
    docker build -t us-central1-docker.pkg.dev/kubeletes/video-repo/video-backend:latest .
    docker push us-central1-docker.pkg.dev/kubeletes/video-repo/video-backend:latest
-
+    ``` 
    # Frontend
+    ``` bash
    cd ../frontend
    docker build -t us-central1-docker.pkg.dev/kubeletes/video-repo/video-frontend:latest .
    docker push us-central1-docker.pkg.dev/kubeletes/video-repo/video-frontend:latest
-   
+   ```
 
-5. *Despliega los servicios en tu clúster de GKE*:
+6. *Despliega los servicios en tu clúster de GKE*:
    Asegúrate de que tu clúster esté configurado y el contexto esté apuntando a él (gcloud container clusters get-credentials).
 
    Luego aplica los manifiestos YAML:
 
-   bash
+   ``` bash
    kubectl apply -f kubernetes/
-   
+   ``` 
 
-6. *Verifica el estado de los pods y servicios*:
+7. *Verifica el estado de los pods y servicios*:
 
-   bash
+   ``` bash
    kubectl get pods
    kubectl get services
    kubectl get ingress
-   
+   ``` 
 
-7. *Accede a la aplicación desde el navegador* usando la IP externa del servicio frontend o el balanceador de carga:
+8. *Accede a la aplicación desde el navegador* usando la IP externa del servicio frontend o el balanceador de carga:
 
    
    http://<EXTERNAL_IP>:80
